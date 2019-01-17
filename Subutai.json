@@ -36,7 +36,7 @@
         ],
         "groups": [
             {
-                "name": "maurtic",
+                "name": "mautic",
                 "hostnames": [
                     "${hostname}"
                 ]
@@ -47,13 +47,13 @@
         "environmentName": {
             "description": "Environment's name",
             "type": "string",
-            "default": "maurtic",
+            "default": "mautic",
             "validation": "[a-zA-Z0-9_]+"
         },
         "hostname": {
-            "description": "Hostname of the maurtic container",
+            "description": "Hostname of the mautic container",
             "type": "string",
-            "default": "maurtic",
+            "default": "mautic",
             "validation": "[a-zA-Z0-9_]+"
         },
         "email": {
