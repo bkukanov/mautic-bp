@@ -94,6 +94,7 @@
       template: 
         src: install_composer.sh
         dest: /root/install_composer.sh
+        mode: 0755
 
     - name: Activate limits.ini
       shell: phpenmod limits
@@ -112,7 +113,8 @@
 
     - name: Install Composer for PHP Packages
       command: /root/install_composer.sh
-
+      chdir: /root
+      
     - name: Enable mod_rewrite
       apache2_module:
         name: mod_rewrite
