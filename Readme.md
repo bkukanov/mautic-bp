@@ -1,2 +1,3 @@
-# Postgres
-A blueprint for creating a postgresql database installation
+# Mautic
+
+A blueprint for creating a mautic installation
