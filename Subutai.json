@@ -1,24 +1,24 @@
 {
     "name": "${environmentName}",
-    "description": "Maurtic Blueprint",
+    "description": "Mautic Blueprint",
     "version": "1.0.0",
-    "ssh-key": "maurtic",
+    "ssh-key": "mautic",
     "author": "https://github.com/akarasulu",
     "containers": [
         {
             "hostname": "${hostname}",
             "template": "debian-stretch",
-            "peer-criteria": "DB-GROUP",
+            "peer-criteria": "CRITERIA",
             "size": "${containerSize}"
         }
     ],
     "peer-criteria": [
         {
-            "name": "DB-GROUP"
+            "name": "CRITERIA"
         }
     ],
     "ansible-configuration": {
-        "source-url": "https://github.com/akarasulu/maurtic-bp/archive/master.zip",
+        "source-url": "https://github.com/akarasulu/mautic-bp/archive/master.zip",
         "ansible-playbook": "main.yml",
         "extra-vars": [
             {
@@ -36,7 +36,7 @@
         ],
         "groups": [
             {
-                "name": "postgres",
+                "name": "maurtic",
                 "hostnames": [
                     "${hostname}"
                 ]
@@ -47,21 +47,21 @@
         "environmentName": {
             "description": "Environment's name",
             "type": "string",
-            "default": "postgres",
+            "default": "maurtic",
             "validation": "[a-zA-Z0-9_]+"
         },
         "hostname": {
-            "description": "Hostname of the db container",
+            "description": "Hostname of the maurtic container",
             "type": "string",
-            "default": "db0",
+            "default": "maurtic",
             "validation": "[a-zA-Z0-9_]+"
         },
         "email": {
-            "description": "pgAdmin user identity/email",
+            "description": "Admin user identity/email",
             "type": "string"
         },
         "password": {
-            "description": "Postgres user password",
+            "description": "Admin user password",
             "type": "string",
             "default": "secret"
         },
