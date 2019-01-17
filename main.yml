@@ -113,9 +113,8 @@
 
     - name: Install Composer for PHP Packages
       command: /root/install_composer.sh
-      chdir: /root
       
     - name: Enable mod_rewrite
       apache2_module:
-        name: mod_rewrite
+        identifier: mod_rewrite
         state: present
