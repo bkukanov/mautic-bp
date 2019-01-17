@@ -1,7 +1,7 @@
 # Ansible Playbook for Subutai Postgresql Blueprint
 --- 
 
-- hosts: postgres
+- hosts: mautic
   remote_user: root
   tasks:
 
@@ -23,13 +23,12 @@
 
     - name: Install setup tools
       apt:
-        name: "{{ item }}"
+        name:
+          - dirmngr
+          - ca-certificates
+          - sudo
+          - locales
         allow_unauthenticated: yes
-      with_items:
-        - dirmngr
-        - ca-certificates
-        - sudo
-        - locales
 
     - name: Transfer locales_setup.sh
       copy: src=locales_setup.sh dest=/root/locales_setup.sh
@@ -39,18 +38,16 @@
 
     - name: Install required debs
       apt:
-        name: "{{ item }}"
-        state: present
-      with_items:
-        - git
-        - php7.0
-        - php7.0-cgi
-        - php7.0-mysql
-        - apache2
-        - libapache2-mod-php7.0
-        - unzip 
-        - mariadb-server
-        - python-mysqldb
+        name:
+          - git
+          - php7.0
+          - php7.0-cgi
+          - php7.0-mysql
+          - apache2
+          - libapache2-mod-php7.0
+          - unzip 
+          - mariadb-server
+          - python-mysqldb
 
     # -------------------------------------------------------------------------
     # Install NodeSource NodeJS, NPM, and Grunt
