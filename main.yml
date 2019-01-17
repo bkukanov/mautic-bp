@@ -28,6 +28,7 @@
           - ca-certificates
           - sudo
           - locales
+          - apt-transport-https
         allow_unauthenticated: yes
 
     - name: Transfer locales_setup.sh
