@@ -26,9 +26,9 @@
         name:
           - dirmngr
           - ca-certificates
+          - apt-transport-https
           - sudo
           - locales
-          - apt-transport-https
         allow_unauthenticated: yes
 
     - name: Transfer locales_setup.sh
@@ -85,10 +85,15 @@
     # Setup PHP and Create DB User
     # -------------------------------------------------------------------------
 
-    - name: Install limits.ini
+    - name: Upload limits.ini
       template: 
         src: limits.ini
         dest: /etc/php/7.0/mods-available/limits.ini
+
+    - name: Upload install_composer.sh
+      template: 
+        src: install_composer.sh
+        dest: /root/install_composer.sh
 
     - name: Activate limits.ini
       shell: phpenmod limits
@@ -105,3 +110,10 @@
         password: "{{ subutai.user_variables.password }}"
         priv: "mautic.*:ALL"
 
+    - name: Install Composer for PHP Packages
+      command: /root/install_composer.sh
+
+    - name: Enable mod_rewrite
+      apache2_module:
+        name: mod_rewrite
+        state: present
