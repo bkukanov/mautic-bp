@@ -145,7 +145,7 @@
           - /etc/php/7.0/apache2/php.ini
           - /etc/php/7.0/cli/php.ini
           - /etc/php/7.0/cgi/php.ini
-        regexp: '^;date.timezone =.*'
+        regexp: '^.*date.timezone.*'
         line: 'date.timezone = Etc/UTC'
         create: yes
     
@@ -153,6 +153,12 @@
     # Apache Setup
     # -------------------------------------------------------------------------
     
+    - name: Setup default site
+      template: 
+        src: 000-default.conf
+        dest: /etc/apache2/sites-available/000-default.conf
+        force: yes
+
     - name: Enable mod_rewrite
       apache2_module:
         name: rewrite
