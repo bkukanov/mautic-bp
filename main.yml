@@ -121,14 +121,14 @@
     - name: Clone Mautic Repository
       git:
         clone: yes
-        dest: /var/www/mautic
+        dest: /var/www/html/mautic
         repo: https://github.com/mautic/mautic.git
         version: 2.15.0
 
     - name: Update PHP with Composer
       composer:
         command: install
-        working_dir: /var/www/mautic
+        working_dir: /var/www/html/mautic
 
     # -------------------------------------------------------------------------
     # Apache Setup
