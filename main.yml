@@ -113,7 +113,7 @@
     - name: Clone Mautic Repository
       git:
         clone: yes
-        dest: /var/www
+        dest: /var/www/mautic
         repo: https://github.com/mautic/mautic.git
 
     - name: Update PHP with Composer
