@@ -50,6 +50,7 @@
           - php-amqplib
           - php-zip
           - php-mcrypt
+          - php-intl
           - php-imap
           - php-mailparse
           - composer
@@ -130,6 +131,24 @@
         command: install
         working_dir: /var/www/html/mautic
 
+    - name: Chmod to www-data
+      file:
+        dest: /var/www
+        owner: www-data
+        group: www-data
+        state: directory
+        recursive: yes
+
+    - name: Change data timezone
+      lineinfile:
+        path:
+          - /etc/php/7.0/apache2/php.ini
+          - /etc/php/7.0/cli/php.ini
+          - /etc/php/7.0/cgi/php.ini
+        regexp: '^;date.timezone =.*'
+        line: 'date.timezone = Etc/UTC'
+        create: yes
+    
     # -------------------------------------------------------------------------
     # Apache Setup
     # -------------------------------------------------------------------------
