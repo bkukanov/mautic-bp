@@ -127,7 +127,7 @@
 
     - name: Update PHP with Composer
       composer:
-        command: update
+        command: install
         working_dir: /var/www/mautic
 
     # -------------------------------------------------------------------------
