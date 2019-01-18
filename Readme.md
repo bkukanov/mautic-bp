@@ -1,6 +1,6 @@
 # Mautic
 
-A blueprint for creating a mautic installation.
+A blueprint for creating a mautic installation using Subutai.
 
 ## How to use
 
