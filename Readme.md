@@ -36,22 +36,57 @@ Watch it build the environment for you. It will take a couple minutes.
 
 If you're impatient like me you can check the logs by going to the `Application` tab to select the logs button for the Mautic application. NOTE: you can install Muatic into existing cloud environments next to other applications as well.
 
-![Mautic Blueprint Building](https://raw.githubusercontent.com/akarasulu/mautic-bp/master/bp-wizard5.png)
+![Mautic Blueprint Ansible Logs](https://raw.githubusercontent.com/akarasulu/mautic-bp/master/bp-wizard5.png)
+
+Once the environment is built with the application on the container portmappings tab you will see a link to get to the Mautic application fronted by HTTPS with your certificate: 
+
+![Mautic Blueprint Built See Port Mappings](https://raw.githubusercontent.com/akarasulu/mautic-bp/master/bp-environment.png)
+
+Clicking the links seems to take you to the wrong place:
+
+![Mautic Blueprint Error](https://raw.githubusercontent.com/akarasulu/mautic-bp/master/bp-error.png)
+
+Just change the link to use HTTPS like so. This is only needed once to hit the installer:
+
+![Mautic Blueprint Error](https://raw.githubusercontent.com/akarasulu/mautic-bp/master/bp-error2.png)
 
 
-5. After building successfully go the following URL (put in your domain):
+5. After building successfully go the following URL (pull in your domain though or correct the URL as shown above):
 
 ```
 https://$yourdomain/index.php/installer
 ```
 
-6. You will be on the installer for Mautic which will ask for Database and Mail configuration questions. Here's the answer to the questions:
+![Mautic Blueprint Error](https://raw.githubusercontent.com/akarasulu/mautic-bp/master/bp-installer1.png)
 
-* mail host: localhost
-* mail port: 25
-* mail password/security: none
+
+6. On the installer's database page you will be asked for Database configuration questions. Here's the answer to the questions for the installation. Don't worry the database cannot be accessed from the outside:
+
+![Mautic Blueprint Error](https://raw.githubusercontent.com/akarasulu/mautic-bp/master/bp-installer2.png)
+
 * db user: mautic
 * db name: mautic
-* db password: mautic
+* db password: password set on the bp installer wizard
+
+Note this takes some time.
+
+7. On the installer's user configuration page you will be asked for the administrator's information. Here's what I answered to the questions for the installation:
+
+![Mautic Blueprint Error](https://raw.githubusercontent.com/akarasulu/mautic-bp/master/bp-installer3.png)
+
+
+8. On the installer's email configuration page you will be asked for some information. Here's what I answered to the questions:
+
+![Mautic Blueprint Error](https://raw.githubusercontent.com/akarasulu/mautic-bp/master/bp-installer4.png)
+
+The last most screen is the email server configuration information and you should just use localhost and port 25 with authentication set to none.
+
+Now you should see the login window, you might need to adjust http to https:
+
+![Mautic Blueprint Error](https://raw.githubusercontent.com/akarasulu/mautic-bp/master/bp-login.png)
+
+You should see this after entering into the app:
+
+![Mautic Blueprint Error](https://raw.githubusercontent.com/akarasulu/mautic-bp/master/bp-logged-in.png)
 
 Anything else feel free to ask.
