@@ -137,7 +137,7 @@
         owner: www-data
         group: www-data
         state: directory
-        recursive: yes
+        recurse: yes
 
     - name: Change data timezone
       lineinfile:
