@@ -30,6 +30,9 @@
         "ansible-playbook": "main.yml",
         "extra-vars": [
             {
+                "key": "domain",
+                "value": "${domain}"
+            },            {
                 "key": "hostname",
                 "value": "${hostname}"
             },
@@ -56,6 +59,12 @@
             "description": "Environment's name",
             "type": "string",
             "default": "mautic",
+            "validation": "[a-zA-Z0-9_]+"
+        },
+        "domain": {
+            "description": "Domain name",
+            "type": "domain",
+            "default": "mautic.envs.subut.ai",
             "validation": "[a-zA-Z0-9_]+"
         },
         "hostname": {
