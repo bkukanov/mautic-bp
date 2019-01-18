@@ -44,6 +44,7 @@
           - php7.0
           - php7.0-cgi
           - php7.0-mysql
+          - composer
           - apache2
           - libapache2-mod-php7.0
           - unzip 
@@ -90,12 +91,6 @@
         src: limits.ini
         dest: /etc/php/7.0/mods-available/limits.ini
 
-    - name: Upload install_composer.sh
-      template: 
-        src: install_composer.sh
-        dest: /root/install_composer.sh
-        mode: 0755
-
     - name: Activate limits.ini
       shell: phpenmod limits
 
@@ -111,9 +106,25 @@
         password: "{{ subutai.user_variables.password }}"
         priv: "mautic.*:ALL"
 
-    - name: Install Composer for PHP Packages
-      command: /root/install_composer.sh
-      
+    # -------------------------------------------------------------------------
+    # Mautic Setup
+    # -------------------------------------------------------------------------
+    
+    - name: Clone Mautic Repository
+      git:
+        clone: yes
+        dest: /var/www
+        repo: https://github.com/mautic/mautic.git
+
+    - name: Update PHP with Composer
+      composer:
+        command: install
+        working_dir: /var/www/mautic
+
+    # -------------------------------------------------------------------------
+    # Apache Setup
+    # -------------------------------------------------------------------------
+    
     - name: Enable mod_rewrite
       apache2_module:
         name: rewrite
