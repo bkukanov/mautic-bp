@@ -44,6 +44,14 @@
           - php7.0
           - php7.0-cgi
           - php7.0-mysql
+          - php-xml
+          - php-mbstring
+          - php-curl
+          - php-amqplib
+          - php-zip
+          - php-mcrypt
+          - php-imap
+          - php-mailparse
           - composer
           - apache2
           - libapache2-mod-php7.0
