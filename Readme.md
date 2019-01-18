@@ -85,6 +85,8 @@ Now you should see the login window, you might need to adjust http to https:
 
 ![Mautic Blueprint Error](https://raw.githubusercontent.com/akarasulu/mautic-bp/master/images/bp-login.png)
 
+## Eureka moment
+
 You should see this after entering into the app:
 
 ![Mautic Blueprint Error](https://raw.githubusercontent.com/akarasulu/mautic-bp/master/images/bp-logged-in.png)
