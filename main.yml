@@ -54,7 +54,7 @@
           - php-imap
           - php-mailparse
           - composer
-          - apache2
+          - nginx
           - libapache2-mod-php7.0
           - unzip 
           - mariadb-server
@@ -139,33 +139,40 @@
         state: directory
         recurse: yes
 
-    - name: Change data timezone
-      lineinfile:
+    # Need to confirm this is actually working properly
+    - name: Add block to PHP configuration files
+      blockinfile:
         path:
           - /etc/php/7.0/apache2/php.ini
           - /etc/php/7.0/cli/php.ini
           - /etc/php/7.0/cgi/php.ini
-        regexp: '^.*date.timezone.*'
-        line: 'date.timezone = Etc/UTC'
+        block: |
+          file_uploads = On
+          allow_url_fopen = On
+          memory_limit = 512M
+          max_execution_time = 360
+          cgi.fix_pathinfo = 0
+          date.timezone = Etc/UTC
         create: yes
     
     # -------------------------------------------------------------------------
-    # Apache Setup
+    # NGINX Setup
     # -------------------------------------------------------------------------
     
-    - name: Setup default site
+    - name: Setup mautic site
       template: 
-        src: 000-default.conf
-        dest: /etc/apache2/sites-available/000-default.conf
+        src: mautic.conf
+        dest: /etc/nginx/sites-available/mautic.conf
         force: yes
 
-    - name: Enable mod_rewrite
-      apache2_module:
-        name: rewrite
-        state: present
+    - name: Link available site to enable
+      file:
+        src: /etc/nginx/sites-available/mautic.conf
+        dest: /etc/nginx/sites-enabled/mautic.conf
+        state: link
 
-    - name: Restart Apache
+    - name: Restart NGINX
       systemd:
-        name: apache2
+        name: nginx
         state: restarted
 
