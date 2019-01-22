@@ -44,6 +44,7 @@
           - php7.0
           - php7.0-cgi
           - php7.0-mysql
+          - php-fpm
           - php-xml
           - php-mbstring
           - php-curl
