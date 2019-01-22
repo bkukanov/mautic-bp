@@ -55,8 +55,7 @@
           - php-mailparse
           - composer
           - nginx
-          - libapache2-mod-php7.0
-          - unzip 
+          - unzip
           - mariadb-server
           - python-mysqldb
 

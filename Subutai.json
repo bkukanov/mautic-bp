@@ -1,7 +1,7 @@
 {
     "name": "${environmentName}",
     "description": "Mautic Blueprint",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "ssh-key": "mautic",
     "author": "https://github.com/akarasulu",
     "containers": [
