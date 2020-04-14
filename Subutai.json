@@ -8,7 +8,7 @@
         {
             "hostname": "${hostname}",
             "template": "debian-stretch",
-            "peer-criteria": "CRITERIA",
+            "peer-criteria": "HTTP-GROUP",
             "size": "${containerSize}",
             "port-mapping": [
                 {
@@ -22,7 +22,7 @@
     ],
     "peer-criteria": [
         {
-            "name": "CRITERIA"
+            "name": "HTTP-GROUP"
         }
     ],
     "ansible-configuration": {
